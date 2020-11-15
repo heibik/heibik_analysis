@@ -1,0 +1,1345 @@
+{
+	"topCustomers": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.topCustomers",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "List",
+			"header": {
+				"title": "Top 3 Kunden",
+				"subTitle": "Gemessen an ihren Umsätzen",
+				"icon": {
+					"src": "sap-icon://person-placeholder"
+				}
+			},
+			"content": {
+				"data": {
+					"json": [
+						{
+							"id": "03895",
+							"name": "Viva",
+							"description": "35 Aufträge",
+							"info": "343.353,00 €",
+							"infoState": "None"
+						},
+						{
+							"id": "03465",
+							"name": "xSpirit",
+							"description": "29 Aufträge",
+							"info": "233.353,00 €",
+							"infoState": "None"
+						},
+						{
+							"id": "43643",
+							"name": "Gesund und Saftig",
+							"description": "10 Aufträge",
+							"info": "213.353,00 €",
+							"infoState": "None"
+						}
+					]
+				},
+				"item": {
+					"title": {
+						"value": "{name}"
+					},
+					"description": {
+						"value": "{description}"
+					},
+					"info": {
+						"value": "{info}",
+						"state": "{infoState}"
+					},
+					"actions": [
+						{
+							"type": "Navigation",
+							"parameters": {
+								"url": "./Customer/{id}"
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"topCustomersAmount": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.topCustomersAmount",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Verhältnis der Top Kunden",
+				"subTitle": "Gemessen an ihren Umsätzen",
+				"icon": {
+					"src": "sap-icon://waiver"
+				}
+			},
+			"content": {
+				"chartType": "Donut",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": true
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "size",
+				"dimensionAxis": "color",
+				"data": {
+					"json": {
+						"measures": [
+							{
+								"name": "Viva",
+								"value": 343353.00
+							},
+							{
+								"name": "xSirit",
+								"value": 233353.00
+							},
+							{
+								"name": "Gesund und Saftig",
+								"value": 213353.00
+							},
+							{
+								"name": "Rest",
+								"value": 3213353.00
+							}
+						]
+					},
+					"path": "/measures"
+				},
+				"dimensions": [{
+					"label": "Kunde",
+					"value": "{name}"
+				}],
+				"measures": [{
+					"label": "Betrag",
+					"value": "{value}"
+				}]
+			}
+		}
+	},
+	"topCustomersPayment": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.topCustomersPayment",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Zahlungszeitraum in Tagen",
+				"subTitle": "Durchschnittlicher Zeitraum bis zur Zahlung",
+				"icon": {
+					"src": "sap-icon://calendar"
+				}
+			},
+			"content": {
+				"chartType": "StackedColumn",
+				"legend": {
+					"visible": false,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": false,
+						"showTotal": true
+					},
+					"categoryAxisText": {
+						"visible": false
+					},
+					"valueAxisText": {
+						"visible": false
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"data": {
+					"json": {
+						"list": [
+							{
+								"Name": "Viva",
+								"Tage": 12
+							},
+							{
+								"Name": "xSpirit",
+								"Tage": 32
+							},
+							{
+								"Name": "Gesund und Saftig",
+								"Tage": 18
+							},
+							{
+								"Name": "Durchschnitt",
+								"Tage": 15
+							}
+						]
+					},
+					"path": "/list"
+				},
+				"dimensions": [
+					{
+						"label": "Kunde",
+						"value": "{Name}"
+					}
+				],
+				"measures": [
+					{
+						"label": "Tage",
+						"value": "{Tage}"
+					}
+				]
+			}
+		}
+	},
+	"overduePayment": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.overduePayments",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "List",
+			"header": {
+				"title": "Überfällige Zahlungen",
+				"subTitle": "Rechnungen über dem Zahlungsziel",
+				"icon": {
+					"src": "sap-icon://batch-payments"
+				}
+			},
+			"content": {
+				"data": {
+					"json": [
+						{
+							"id": "openPayments",
+							"name": "Offene Überfällige Rechnungen",
+							"description": "35 Aufträge",
+							"info": "353,00 €",
+							"infoState": "Error"
+						},
+						{
+							"id": "scarcePayments",
+							"name": "Kritische Rechnungen",
+							"description": "10 Aufträge",
+							"info": "936,00 €",
+							"infoState": "Warning"
+						},
+						{
+							"id": "closedPayments",
+							"name": "Geschlossene Überfällige Rechnungen",
+							"description": "29 Aufträge",
+							"info": "325,00 €",
+							"infoState": "None"
+						}
+					]
+				},
+				"item": {
+					"title": {
+						"value": "{name}"
+					},
+					"description": {
+						"value": "{description}"
+					},
+					"info": {
+						"value": "{info}",
+						"state": "{infoState}"
+					},
+					"actions": [
+						{
+							"type": "Navigation",
+							"parameters": {
+								"url": "./Customer/{id}"
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"overdueDelivery": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.overdueDelivery",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "List",
+			"header": {
+				"title": "Überfällige Lieferungen",
+				"subTitle": "Lieferungen über dem Wunschlieferdatum",
+				"icon": {
+					"src": "sap-icon://shipping-status"
+				}
+			},
+			"content": {
+				"data": {
+					"json": [
+						{
+							"id": "openDelivery",
+							"name": "Offene Überfällige Lieferungen",
+							"description": "97 Aufträge",
+							"info": "325,00 €",
+							"infoState": "Error"
+						},
+						{
+							"id": "scarcePayments",
+							"name": "Kritische Lieferungen",
+							"description": "3 Aufträge",
+							"info": "325,00 €",
+							"infoState": "Warning"
+						},
+						{
+							"id": "closedPayments",
+							"name": "Geschlossene Überfällige Lieferungen",
+							"description": "23 Aufträge",
+							"info": "325,00 €",
+							"infoState": "None"
+						}
+					]
+				},
+				"item": {
+					"title": {
+						"value": "{name}"
+					},
+					"description": {
+						"value": "{description}"
+					},
+					"info": {
+						"value": "{info}",
+						"state": "{infoState}"
+					},
+					"actions": [
+						{
+							"type": "Navigation",
+							"parameters": {
+								"url": "./Customer/{id}"
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"overduePaymentDiagram": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.overduePaymentDiagram",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"type": "Numeric",
+				"data": {
+					"json": {
+						"n": "22",
+						"u": "%",
+						"trend": "Up",
+						"valueColor": "Good"
+					}
+				},
+				"title": "Überfällige Zahlungen",
+				"subTitle": "Verleich mit Monat des Vorjahres",
+				"mainIndicator": {
+					"number": "{n}",
+					"unit": "{u}",
+					"trend": "{trend}",
+					"state": "{valueColor}"
+				}
+			},
+			"content": {
+				"data": {
+				  "json": [
+					  {
+						"Monat": "Jan",
+						"Anzahl": 35
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl": 675
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl": 23
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl": 134
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl": 275
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl": 322
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl": 35
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl": 675
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl": 23
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl": 134
+					  },
+					  {
+						"Monat": "Nov",
+						"Anzahl": 275
+					  },
+					  {
+						"Monat": "Dez",
+						"Anzahl": 322
+					  },
+					  {
+						"Monat": "Jan",
+						"Anzahl2": 32
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl2": 63
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl2": 542
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl2": 134
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl2": 43
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl2": 554
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl2": 53
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl2": 32
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl2": 53
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl2": 100
+					  }
+					]
+				},
+				"chartType": "Line",
+				"legend": {
+				  "visible": true,
+				  "position": "Top",
+				  "alignment": "Center"
+				},
+				"plotArea": {
+				  "dataLabel": {
+					"visible": false,
+					"showTotal": false
+				  },
+				  "categoryAxisText": {
+					"visible": false
+				  },
+				  "valueAxisText": {
+					"visible": false
+				  }
+				},
+				"title": {
+				  "visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"dimensions": [
+				  {
+					"label": "Jahr",
+					"value": "{Monat}"
+				  }
+				],
+				"measures": [
+				  {
+					"label": "Vorjahr",
+					"value": "{Anzahl}"
+				  },
+				  {
+					"label": "Dieses Jahr",
+					"value": "{Anzahl2}"
+				  }
+				]
+			  }
+		}
+	},
+	"overdueDeliveryDiagram": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.overdueDeliveryDiagram",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"type": "Numeric",
+				"data": {
+					"json": {
+						"n": "22",
+						"u": "%",
+						"trend": "Up",
+						"valueColor": "Good"
+					}
+				},
+				"title": "Überfällige Lieferungen",
+				"subTitle": "Verleich mit Monat des Vorjahres",
+				"mainIndicator": {
+					"number": "{n}",
+					"unit": "{u}",
+					"trend": "{trend}",
+					"state": "{valueColor}"
+				}
+			},
+			"content": {
+				"data": {
+				  "json": [
+					  {
+						"Monat": "Jan",
+						"Anzahl": 35
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl": 675
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl": 23
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl": 134
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl": 275
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl": 322
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl": 35
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl": 675
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl": 23
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl": 134
+					  },
+					  {
+						"Monat": "Nov",
+						"Anzahl": 275
+					  },
+					  {
+						"Monat": "Dez",
+						"Anzahl": 322
+					  },
+					  {
+						"Monat": "Jan",
+						"Anzahl2": 32
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl2": 63
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl2": 542
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl2": 134
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl2": 43
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl2": 554
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl2": 53
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl2": 32
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl2": 53
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl2": 100
+					  }
+					]
+				},
+				"chartType": "Line",
+				"legend": {
+				  "visible": true,
+				  "position": "Top",
+				  "alignment": "Center"
+				},
+				"plotArea": {
+				  "dataLabel": {
+					"visible": false,
+					"showTotal": false
+				  },
+				  "categoryAxisText": {
+					"visible": false
+				  },
+				  "valueAxisText": {
+					"visible": false
+				  }
+				},
+				"title": {
+				  "visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"dimensions": [
+				  {
+					"label": "Jahr",
+					"value": "{Monat}"
+				  }
+				],
+				"measures": [
+				  {
+					"label": "Vorjahr",
+					"value": "{Anzahl}"
+				  },
+				  {
+					"label": "Dieses Jahr",
+					"value": "{Anzahl2}"
+				  }
+				]
+			  }
+		}
+	},
+	"offersDiagram": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.offers",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"type": "Numeric",
+				"data": {
+					"json": {
+						"n": "22",
+						"u": "%",
+						"trend": "Up",
+						"valueColor": "Good"
+					}
+				},
+				"title": "Kundenaufträge Anzahl",
+				"subTitle": "Verleich mit Monat des Vorjahres",
+				"mainIndicator": {
+					"number": "{n}",
+					"unit": "{u}",
+					"trend": "{trend}",
+					"state": "{valueColor}"
+				}
+			},
+			"content": {
+				"data": {
+				  "json": [
+					  {
+						"Monat": "Jan",
+						"Anzahl1": 35
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl1": 675
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl1": 23
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl1": 134
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl1": 275
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl1": 322
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl1": 35
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl1": 675
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl1": 23
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl1": 134
+					  },
+					  {
+						"Monat": "Nov",
+						"Anzahl1": 275
+					  },
+					  {
+						"Monat": "Dez",
+						"Anzahl1": 322
+					  },
+					  {
+						"Monat": "Jan",
+						"Anzahl2": 35
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl2": 300
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl2": 44
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl2": 100
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl2": 300
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl2": 323
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl2": 575
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl2": 354
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl2": 34
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl2": 187
+					  }
+					]
+				},
+				"chartType": "Line",
+				"legend": {
+				  "visible": true,
+				  "position": "Top",
+				  "alignment": "Center"
+				},
+				"plotArea": {
+				  "dataLabel": {
+					"visible": false,
+					"showTotal": false
+				  },
+				  "categoryAxisText": {
+					"visible": false
+				  },
+				  "valueAxisText": {
+					"visible": false
+				  }
+				},
+				"title": {
+				  "visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"dimensions": [
+				  {
+					"label": "Jahr",
+					"value": "{Monat}"
+				  }
+				],
+				"measures": [
+				  {
+					"label": "Vorjahr",
+					"value": "{Anzahl1}"
+				  },
+				  {
+					"label": "Dieses Jahr",
+					"value": "{Anzahl2}"
+				  }
+				]
+			  }
+		}
+	},
+	"offersAmountDiagram": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.offers",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"type": "Numeric",
+				"data": {
+					"json": {
+						"n": "22",
+						"u": "%",
+						"trend": "Up",
+						"valueColor": "Good"
+					}
+				},
+				"title": "Kundenaufträge Umsatz in €",
+				"subTitle": "Verleich mit Monat des Vorjahres",
+				"mainIndicator": {
+					"number": "{n}",
+					"unit": "{u}",
+					"trend": "{trend}",
+					"state": "{valueColor}"
+				}
+			},
+			"content": {
+				"data": {
+				  "json": [
+					  {
+						"Monat": "Jan",
+						"Anzahl1": 557.67
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl1": 54.65
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl1": 3565.56
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl1": 24567.77
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl1": 2435.75
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl1": 353.76
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl1": 1323.75
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl1": 57533.76
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl1": 364765.76
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl1": 364675.86
+					  },
+					  {
+						"Monat": "Nov",
+						"Anzahl1": 66.65
+					  },
+					  {
+						"Monat": "Dez",
+						"Anzahl1": 757.86
+					  },
+					  {
+						"Monat": "Jan",
+						"Anzahl2": 5756.77
+					  },
+					  {
+						"Monat": "Feb",
+						"Anzahl2": 465675.7
+					  },
+					  {
+						"Monat": "Mär",
+						"Anzahl2": 366.65
+					  },
+					  {
+						"Monat": "Apr",
+						"Anzahl2": 76576.78
+					  },
+					  {
+						"Monat": "Mai",
+						"Anzahl2": 8977.78
+					  },
+					  {
+						"Monat": "Jun",
+						"Anzahl2": 89.88
+					  },
+					  {
+						"Monat": "Jul",
+						"Anzahl2": 575778.78
+					  },
+					  {
+						"Monat": "Aug",
+						"Anzahl2": 75797.87
+					  },
+					  {
+						"Monat": "Sep",
+						"Anzahl2": 79886.78
+					  },
+					  {
+						"Monat": "Okt",
+						"Anzahl2": 7986.87
+					  }
+					]
+				},
+				"chartType": "Line",
+				"legend": {
+				  "visible": true,
+				  "position": "Top",
+				  "alignment": "Center"
+				},
+				"plotArea": {
+				  "dataLabel": {
+					"visible": false,
+					"showTotal": false
+				  },
+				  "categoryAxisText": {
+					"visible": false
+				  },
+				  "valueAxisText": {
+					"visible": false
+				  }
+				},
+				"title": {
+				  "visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"dimensions": [
+				  {
+					"label": "Jahr",
+					"value": "{Monat}"
+				  }
+				],
+				"measures": [
+				  {
+					"label": "Vorjahr",
+					"value": "{Anzahl1}"
+				  },
+				  {
+					"label": "Dieses Jahr",
+					"value": "{Anzahl2}"
+				  }
+				]
+			  }
+		}
+	},
+	"offersBar": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.offersBar",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Kundenaufträge Anzahl",
+				"subTitle": "Vergleich mit Vorjahr",
+				"icon": {
+					"src": "sap-icon://product"
+				}
+			},
+			"content": {
+				"chartType": "StackedColumn",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": true
+					},
+					"categoryAxisText": {
+						"visible": false
+					},
+					"valueAxisText": {
+						"visible": false
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"data": {
+					"json": {
+						"list": [
+							{
+								"Name": "Vorjahr",
+								"anzahl1": 26846,
+								"anzahl2": 15040,
+								"label":"fjkdjk"
+							},
+							{
+								"Name": "Dieses Jahr - 13. Nov",
+								"anzahl1": 36464,
+								"anzahl2": 0,
+								"label":"fjkdfgfgfjk"
+							}
+						],
+						"label1": "Vorjahr",
+						"label2": "26846"
+
+					},
+					"path": "/list"
+				},
+				"dimensions": [
+					{
+						"label": "Kunde",
+						"value": "{Name}"
+					}
+				],
+				"measures": [
+					{
+						"label": "{label1}",
+						"value": "{anzahl2}"
+					},
+					{
+						"label": "{label2}",
+						"value": "{anzahl1}"
+					}
+				]
+			}
+		}
+	},
+	"offersAmountBar": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.offersBar",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Kundenaufträge Umsatz in €",
+				"subTitle": "Vergleich mit Vorjahr",
+				"icon": {
+					"src": "sap-icon://loan"
+				}
+			},
+			"content": {
+				"chartType": "StackedColumn",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": true
+					},
+					"categoryAxisText": {
+						"visible": false
+					},
+					"valueAxisText": {
+						"visible": false
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "valueAxis",
+				"dimensionAxis": "categoryAxis",
+				"data": {
+					"json": {
+						"list": [
+							{
+								"Name": "Vorjahr",
+								"anzahl1": 2684645,
+								"anzahl2": 1504032
+							},
+							{
+								"Name": "Dieses Jahr - 13. Nov",
+								"anzahl1": 3646435,
+								"anzahl2": 0
+							}
+						]
+					},
+					"path": "/list"
+				},
+				"dimensions": [
+					{
+						"label": "Kunde",
+						"value": "{Name}"
+					}
+				],
+				"measures": [
+					{
+						"label": "Gesamtes Jahr",
+						"value": "{anzahl2}"
+					},
+					{
+						"label": "Tagesgenauer Vergleich mit Vorjahr",
+						"value": "{anzahl1}"
+					}
+				]
+			}
+		}
+	},
+	"statusList": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.statusList",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "List",
+			"header": {
+				"title": "Zahlungsfähigkeit",
+				"icon": {
+					"src": "sap-icon://capital-projects"
+				}
+			},
+			"content": {
+				"data": {
+					"json": [
+						{
+							"id": "solvent",
+							"name": "Zahlungsfähig",
+							"description": "35 Kuden"
+						},
+						{
+							"id": "critical",
+							"name": "Kritisch",
+							"description": "12 Kunden"
+						},
+						{
+							"id": "notSolvent",
+							"name": "Nicht Zahlungsfähig",
+							"description": "3 Kunden"
+						}
+					]
+				},
+				"item": {
+					"title": {
+						"value": "{name}"
+					},
+					"description": {
+						"value": "{description}"
+					},
+					"actions": [
+						{
+							"type": "Navigation",
+							"parameters": {
+								"url": "./solvent/{id}"
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"statusPercent": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.statusPercent",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Verhältnis der Zahlungsfähigkeiten",
+				"icon": {
+					"src": "sap-icon://commission-check"
+				}
+			},
+			"content": {
+				"chartType": "Donut",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": true
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "size",
+				"dimensionAxis": "color",
+				"data": {
+					"json": {
+						"measures": [
+							{
+								"name": "Zahlungsfähig",
+								"value": 35
+							},
+							{
+								"name": "Kritisch",
+								"value": 12
+							},
+							{
+								"name": "Nicht Zahlungsfähig",
+								"value": 3
+							}
+						]
+					},
+					"path": "/measures"
+				},
+				"dimensions": [{
+					"label": "Status",
+					"value": "{name}"
+				}],
+				"measures": [{
+					"label": "Anzahl",
+					"value": "{value}"
+				}]
+			}
+		}
+	},
+	"customerList": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.customerList",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "List",
+			"header": {
+				"title": "Kunden",
+				"icon": {
+					"src": "sap-icon://capital-projects"
+				}
+			},
+			"content": {
+				"data": {
+					"request": {
+						"url": "/sapn/opu/odata/sap/ZKOE1_PUPIL_SRV_SRV/pupilSet?$format=json"
+					  },
+					  "path": "/d/results"
+				},
+				"item": {
+					"title": {
+						"value": "{Id}"
+					},
+					"description": {
+						"value": "{Id}"
+					},
+					"actions": [
+						{
+							"type": "Navigation",
+							"parameters": {
+								"url": "./customer/{Id}"
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"customerPercent": {
+		"sap.app": {
+			"id": "sample.CardsLayout.model.statusPercent",
+			"type": "card"
+		},
+		"sap.card": {
+			"type": "Analytical",
+			"header": {
+				"title": "Verhältnis der Kunden",
+				"icon": {
+					"src": "sap-icon://customer-history"
+				}
+			},
+			"content": {
+				"chartType": "Donut",
+				"legend": {
+					"visible": true,
+					"position": "Bottom",
+					"alignment": "Left"
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": true,
+						"showTotal": true
+					}
+				},
+				"title": {
+					"visible": false
+				},
+				"measureAxis": "size",
+				"dimensionAxis": "color",
+				"data": {
+					"json": {
+						"measures": [
+							{
+								"name": "Stammkunden",
+								"value": 35
+							},
+							{
+								"name": "Keine Stammkunden",
+								"value": 12
+							},
+							{
+								"name": "Neue Kunden",
+								"value": 3
+							}
+						]
+					},
+					"path": "/measures"
+				},
+				"dimensions": [{
+					"label": "Status",
+					"value": "{name}"
+				}],
+				"measures": [{
+					"label": "Anzahl",
+					"value": "{value}"
+				}]
+			}
+		}
+	}
+}
+
+

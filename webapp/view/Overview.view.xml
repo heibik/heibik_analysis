@@ -1,0 +1,250 @@
+<mvc:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:m="sap.m"
+	controllerName="ch05.chap05_overview_detail.controller.Overview" 
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.uxap"
+	xmlns:f="sap.f"
+	xmlns:w="sap.ui.integration.widgets"
+	xmlns:cssgrid="sap.ui.layout.cssgrid">
+	<m:App>
+		<m:pages>
+			<m:Page title="Analyse">
+				<m:content>
+					<l:DynamicSideContent
+			id="DynamicSideContent"
+			class="sapUiDSCExplored"
+			sideContentFallDown="BelowM"
+			sideContentPosition="End"
+			containerQuery="true"
+			showSideContent="false"
+			breakpointChanged="updateToggleButtonState">
+			<l:mainContent>
+				<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true">
+					<headerTitle>
+						<ObjectPageDynamicHeaderTitle>
+							<expandedHeading>
+								<m:Title text="heibik analysis" wrapping="true" />
+							</expandedHeading>
+
+							<snappedHeading>
+								<m:HBox>
+									<m:VBox>
+										<m:Avatar class="sapUiSmallMarginEnd" displayShape="Square" src="sap-icon://bbyd-dashboard"/>
+									</m:VBox>
+
+									<m:VBox>
+										<m:Title text="heibik analysis" wrapping="true"/>
+										<m:Text text="Kennzahlen der Kundenaufträge" class="sapUiSmallMarginBottom"/>
+									</m:VBox>
+								</m:HBox>
+							</snappedHeading>
+
+							<expandedContent>
+								<m:Text text="Kennzahlen der Kundenaufträge"/>
+							</expandedContent>
+
+							<snappedTitleOnMobile>
+								<m:Title text="heibik analysis"/>
+							</snappedTitleOnMobile>
+
+							<actions>
+								<m:OverflowToolbarButton icon="sap-icon://accelerated" text="Jahr auswählen" type="Emphasized" tooltip="Jahr auswählen"/>
+							</actions>
+						</ObjectPageDynamicHeaderTitle>
+					</headerTitle>
+
+					<headerContent>
+						<m:FlexBox wrap="Wrap" fitContainer="true">
+							<m:Avatar class="sapUiMediumMarginEnd " displayShape="Square" src="sap-icon://bbyd-dashboard" displaySize="L"/>
+
+							<m:VBox class="sapUiLargeMarginEnd ">
+								<m:Title text="Überfällige Kundenzahlungen" class="sapUiTinyMarginBottom"/>
+								<m:ObjectStatus text="Vorhanden" state="Error" icon="sap-icon://status-negative"/>
+							</m:VBox>
+
+							<m:VBox class="sapUiLargeMarginEnd">
+								<m:Title text="Überfällige Lieferungen" class="sapUiTinyMarginBottom"/>
+								<m:ObjectStatus text="Warnung" state="Warning" icon="sap-icon://status-critical"/>
+							</m:VBox>
+
+							<m:VBox class=" sapUiLargeMarginEnd">
+								<m:Title text="Jahresumsatz: Vergleich zu Vorjahr" class="sapUiTinyMarginBottom"/>
+								<m:ObjectStatus text="Mehr" state="Success" icon="sap-icon://status-positive"/>
+							</m:VBox>
+
+						</m:FlexBox>
+						
+						<m:FlexBox wrap="Wrap" fitContainer="true">
+							<m:VBox class=" sapUiLargeMarginEnd">
+								<m:Text/>
+								<m:Text width="320px"
+									text="Dieses Tool bietet eine Vielzahl an Möglichkeiten, die Daten auszuwerten, die beim Verkaufsprozess anfallen."/>
+								<m:Text/>
+								<m:Text width="320px" 
+									text="Die App verwendet das UI5-Framework von SAP."/>
+							</m:VBox>
+
+							<m:VBox class=" sapUiLargeMarginEnd">
+								<m:Title text="Team: heibik" titleStyle="H2"/>
+								<m:Link text="Lukas Kant"/>
+								<m:Link text="Simon Bidrowski"/>
+								<m:Link text="Florian Heider"/>
+							</m:VBox>
+						</m:FlexBox>
+
+					</headerContent>
+					<sections>
+						<ObjectPageSection titleUppercase="false" title="Top Kunden">
+							<subSections>
+								<ObjectPageSubSection titleUppercase="false">
+									<m:List id="idList" items="{test>/pupilSet}" mode="SingleSelect" selectionChange="onDetail">
+										<m:StandardListItem title="{test>Id}" description="{test>Surname}"/>
+									</m:List>
+									<f:GridContainer>
+										<f:layout>
+											<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+										</f:layout>
+										<w:Card manifest="{manifests>/topCustomers}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/topCustomersAmount}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/topCustomersPayment}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+									</f:GridContainer>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+
+
+						<ObjectPageSection titleUppercase="false" title="Überfälligkeiten">
+							<subSections>
+								<ObjectPageSubSection>
+									<f:GridContainer>
+										<f:layout>
+											<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+										</f:layout>
+										<w:Card manifest="{manifests>/overduePayment}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/overduePaymentDiagram}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/overdueDelivery}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/overdueDeliveryDiagram}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+									</f:GridContainer>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+
+
+
+						<ObjectPageSection titleUppercase="false" title="Jahresanalyse">
+							<subSections>
+								<ObjectPageSubSection>
+								<f:GridContainer>
+										<f:layout>
+											<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+										</f:layout>
+										<w:Card manifest="{manifests>/offersBar}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/offersDiagram}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/offersAmountBar}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/offersAmountDiagram}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+									</f:GridContainer>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+
+
+						<ObjectPageSection titleUppercase="false" title="Status">
+							<subSections>
+								<ObjectPageSubSection>
+									<f:GridContainer>
+										<f:layout>
+											<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+										</f:layout>
+										<w:Card manifest="{manifests>/statusList}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/statusPercent}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+									</f:GridContainer>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+
+
+						<ObjectPageSection titleUppercase="false" title="Alle Kunden">
+							<subSections>
+								<ObjectPageSubSection>
+									<f:GridContainer>
+										<f:layout>
+											<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem" />
+										</f:layout>
+										<w:Card manifest="{manifests>/customerList}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+										<w:Card manifest="{manifests>/customerPercent}"  baseUrl="./" action="onAction">
+											<w:layoutData>
+												<f:GridContainerItemLayoutData columns="4" />
+											</w:layoutData>
+										</w:Card>
+									</f:GridContainer>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>
+			</l:mainContent>
+		</l:DynamicSideContent>
+				</m:content>
+			</m:Page>
+		</m:pages>
+	</m:App>
+</mvc:View>
