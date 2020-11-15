@@ -8,7 +8,7 @@
 ## Credits
 ##### Lukas Kant
 * database
-* UI5 Front-End
+* UI5 Front-End (currently only hard-coded test data)
 * ABAP oData
 
 
